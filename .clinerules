@@ -1,0 +1,71 @@
+# .clinerules — Cline 项目配置
+
+## 项目概述
+
+**创极鲜官网** — 火锅食材供应链公司官方网站，主营虾滑产品。
+面向国内 B 端客户（火锅连锁、餐饮采购），预留电商 C 端扩展。
+
+## 技术栈
+
+- React 18 + TypeScript
+- Vite 6（构建工具）
+- Tailwind CSS 3.4（样式）
+- react-router-dom v6（路由）
+- framer-motion（动画）
+- 路径别名：`@` → `src/`
+
+## 项目结构
+
+```
+src/
+├── components/
+│   ├── layout/          # Header, Footer, Layout
+│   ├── ui/              # Button, Section, Card, ScrollReveal, ContactForm
+│   └── home/            # HeroSection, StrengthSection, ProductHighlight, PartnerSection
+├── pages/               # HomePage, ProductsPage, AboutPage, ContactPage
+│   └── pdd/             # 拼多多运营工具页面
+├── data/                # 产品信息常量
+│   └── pdd/             # 拼多多工具数据
+├── hooks/               # 自定义 Hooks
+├── utils/               # 工具函数
+│   └── pdd/             # 拼多多工具逻辑
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+## 开发命令
+
+- `npm run dev` — 启动开发服务器
+- `npm run build` — 构建生产版本
+- `npm run preview` — 预览构建结果
+
+## 编码规范
+
+1. **组件**：函数组件 + TypeScript，使用 `export default`
+2. **样式**：优先使用 Tailwind CSS 类名，避免自定义 CSS
+3. **路由**：使用 react-router-dom v6 的 `<Routes>` / `<Route>`
+4. **动画**：使用 framer-motion 的 `motion` 组件
+5. **路径导入**：使用 `@/` 别名（如 `import Button from '@/components/ui/Button'`）
+6. **命名**：组件 PascalCase，文件 kebab-case，函数/变量 camelCase
+7. **状态管理**：优先使用 React hooks（useState/useEffect），暂不需要全局状态库
+
+## 页面路由
+
+| 路径 | 页面 | 说明 |
+|------|------|------|
+| `/` | HomePage | 首页 |
+| `/products` | ProductsPage | 产品中心 |
+| `/about` | AboutPage | 关于我们 |
+| `/contact` | ContactPage | 联系我们 |
+| `/pdd` | PddDashboard | 拼多多运营工具 |
+| `/pdd/combo-builder` | ComboBuilder | 拼多多SKU组合器 |
+| `/pdd/title-generator` | TitleGenerator | 拼多多标题生成器 |
+| `/pdd/image-prompt` | ImagePromptGen | 拼多多图片提示词 |
+| `/pdd/product-manage` | ProductManage | 拼多多商品管理 |
+| `/pdd/sku-setting` | SkuSetting | 拼多多SKU设置 |
+
+## 环境变量
+
+- `VITE_CONTACT_ENDPOINT` — 询价表单提交接口地址（可选）
+- 未配置时表单以演示模式运行
